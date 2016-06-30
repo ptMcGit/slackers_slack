@@ -64,3 +64,5 @@ gem 'omniauth'
 gem 'omniauth-slack'
 
 gem 'figaro'
+
+gem 'twilio-ruby'
