@@ -1,18 +1,19 @@
+
+
 class ActivityController < ApplicationController
   def feed
-    raise
+    binding.pry
   end
-  #def feed
-  #  resp = HTTParty.get "https://api.github.com/notifications",
-   #                     headers: {
-    #                      "Authorization" => "token #{current_user.github_token}",
-     #                     "User-Agent"    => "silent aardwolf"
-      #                  }
 
-    #if resp.code == 200
-    #  @events = resp
-    #else
-    #  raise "Panic!"
-    #end
-  #end
+  def post_message
+    HTTParty.post "https://slack.com/api/chat.postMessage", query: { "token": current_user.slack_token, "channel": "C1METC0TH", "text": "hello, from the cli." }
+  end
+
+  def test_api
+    HTTParty.get "https://slack.com/api/ap.test", Authorization: current_user.slack_token
+  end
+
+  def test_authentication
+    HTTParty.get "https://slack.com/api/auth.test", query: { "token": current_user.slack_token }
+  end
 end
