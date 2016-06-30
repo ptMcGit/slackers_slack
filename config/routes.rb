@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
     get "/api/postmessage" => "activity#post_message"
 
+    get "/message" => "twilio#message"
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
