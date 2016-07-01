@@ -23,6 +23,6 @@ module SlackApiRequest
   def slack_get_channels(user)
     r = HTTParty.post SlackApiUrl + "channels.list", query: { "token": user.slack_token }
     r["channels"]
-o  end
+  end
 
 end

@@ -11,7 +11,7 @@ class AuthController < Devise::OmniauthCallbacksController
     end
 
     sign_in user
-    redirect_to after_callback_path, notice: "Signed in with Slack"
+    redirect_to user_settings_path, notice: "Signed in with Slack"
   end
 
 end

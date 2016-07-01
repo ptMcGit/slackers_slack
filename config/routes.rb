@@ -9,8 +9,12 @@ Rails.application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
-    get "/users/auth/slack/after_callback" => "welcome#after_callback", as: :after_callback
-    patch "/users/auth/slack/after_callback" => "welcome#after_callback_save", as: :after_callback_save
+    #get "/users/auth/slack/after_callback" => "welcome#after_callback", as: :after_callback
+    #patch "/users/auth/slack/after_callback" => "welcome#after_callback_save", as: :after_callback_save
+
+    get "/user/settings"    => 'user#show',      as: :user_settings
+    patch "/user/settings"  => 'user#update',    as: :user_settings_update
+
     post "/message" => "twilio#message"
 
 
