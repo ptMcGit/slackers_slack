@@ -14,11 +14,11 @@ class WelcomeController < ApplicationController
       current_user.slack_default_channel = params["user"]["slack_default_channel"]
       current_user.save
     else
-      errors.add(:base, "that phone number is invalid")
+      current_user.errors.add(:base, "that phone number is invalid")
     end
     if current_user.errors.any?
       @user = current_user
-      @errors = current_user.errors.messages
+      flash[:error] = current_user.errors.full_messages
       render 'after_callback'
     else
       redirect_to root_path

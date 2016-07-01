@@ -4,7 +4,7 @@ module UserHelpers
   end
 
   def valid_phone_number? phone_number
-    pn.gsub(/\D/,"").length == 10
+    phone_number.gsub(/\D/,"").length == 10
   end
 
   def hash_data data
