@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   include UserHelpers, SlackApiRequest
-  def index
+  def show
   end
 
   def after_callback
@@ -9,7 +9,7 @@ class WelcomeController < ApplicationController
   end
 
   def after_callback_save
-    pn = filter_phone_number(params["phone_number"])
+3    pn = filter_phone_number(params["phone_number"])
     if valid_phone_number?(pn)
       current_user.encrypted_phone_number = pn
       current_user.slack_default_channel = params["user"]["slack_default_channel"]
