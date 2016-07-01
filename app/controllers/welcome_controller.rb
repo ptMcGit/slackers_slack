@@ -1,10 +1,11 @@
 class WelcomeController < ApplicationController
-  include UserHelpers
+  include UserHelpers, SlackApiRequest
   def index
   end
 
   def after_callback
     @user = current_user
+    @channels = slack_get_channels(current_user)
   end
 
   def after_callback_save
