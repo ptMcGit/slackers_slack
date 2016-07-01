@@ -12,8 +12,10 @@ Rails.application.routes.draw do
     get "/api/activity" => "activity#feed"
 
     get "/api/postmessage" => "activity#post_message"
+    get "/users/auth/slack/after_callback" => "welcome#after_callback", as: :after_callback
+    patch "/users/auth/slack/after_callback" => "welcome#after_callback_save", as: :after_callback_save
+    post "/message" => "twilio#message"
 
-    get "/message" => "twilio#message"
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

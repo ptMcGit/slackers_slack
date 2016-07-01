@@ -1,0 +1,7 @@
+<h1>Additional Account Information</h1>
+<%=  bootstrap_form_for @user, url: after_callback_save_path do |f|  %>
+<%= label_tag(:phone_number, "Phone Number") %>
+<%= text_field_tag(:phone_number) %>
+<%= f.text_field :slack_default_channel %>
+<button class="btn btn-primary">Save</button>
+<% end %>
