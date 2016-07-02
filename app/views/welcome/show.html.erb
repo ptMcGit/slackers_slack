@@ -1,35 +1,33 @@
-<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+<div>
+  <img src="<%= @user.image %>" alt="slack_profile_image" class="img-rounded">
+</div>
 
-<!-- Single button -->
-<div class="btn-group">
-  <a type="button" class="btn btn-primary btn-lg btn-block">
+<div class="btn-group-vertical" role="group" aria-label="...">
+
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= "@" + @user.slack_user_name %>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete  %></li>
+      <li><%= link_to "Settings", user_settings_path %></li>
+    </ul>
+  </div>
+
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-default btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= "#" + @user.slack_default_channel %>
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <% @user.slack_channels.each do |channel| %>
+      <li><%= link_to channel, user_settings_update_path, method: :patch, data: channel %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <a type="button" class="btn btn-default btn-lg btn-block">
     <%= @user.slack_team_name %>
   </a>
-</div><br>
-
-
-<!-- Single button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-primary btn-lg btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-     <%= "#" + @user.slack_default_channel %>
-   <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <% @user.slack_channels.each do |channel| %>
-    <li><%= channel %></li>
-    <% end %>
-  </ul>
-  </div><br>
-
-
-<!-- Single button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-primary btn-lg btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-     <%= "@" + @user.slack_user_name %>
-   <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-  <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete  %></li>
-  <li><%= link_to "Settings", user_settings_path %></li>
-  </ul>
-  </div><br>
+</div>
