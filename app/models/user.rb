@@ -9,6 +9,27 @@ class User < ActiveRecord::Base
 
   serialize :slack_data, JSON
 
+  def self.from_omniauth(auth)
+    binding.pry
+    where(slack_id: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      #user.name = auth.info.name   # assuming the user model has a name
+      #user.image = auth.info.image # assuming the user model has an image
+    end
+  end
+
+  def self.new_with_session(params, session)
+    binding.pry
+    super.tap do |user|
+      if data = session["devise.slack_data"] && session["devise.slack_data"]["extra"]["raw_info"]
+        binding.pry
+        user.email = data["email"] if user.email.blank?
+        binding.pry
+      end
+    end
+  end
+
   def slack_token
     slack_data["credentials"]["token"]
   end
@@ -18,6 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def slack_team_name
+    binding.pry
     slack_data["info"]["team"]
   end
 

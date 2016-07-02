@@ -245,7 +245,7 @@ Devise.setup do |config|
 
   #config.omniauth :slack, ENV['SLACK_APP_ID'], ENV['SLACK_APP_SECRET'], scope: 'identity.basic,identity.email'
   #config.omniauth :slack, ENV['SLACK_APP_ID'], ENV['SLACK_APP_SECRET'], scope: 'chat:write:user'
-  config.omniauth :slack, ENV['SLACK_APP_ID'], ENV['SLACK_APP_SECRET'], scope: 'client'
+  config.omniauth :slack, ENV['SLACK_APP_ID'], ENV['SLACK_APP_SECRET'], scope: 'client' #, callback_url: ''
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
