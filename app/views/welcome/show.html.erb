@@ -22,7 +22,7 @@
     </button>
     <ul class="dropdown-menu">
       <% @user.slack_channels.each do |channel| %>
-      <li><%= link_to channel, user_settings_update_path, method: :patch, data: channel %></li>
+      <li><%= link_to channel, user_settings_slack_channel_path(:slack_default_channel => channel), method: :patch %></li>
       <% end %>
     </ul>
   </div>

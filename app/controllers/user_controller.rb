@@ -6,6 +6,12 @@ class UserController < ApplicationController
     @channels = slack_get_channels(current_user)
   end
 
+  def update_slack_channel_from_button
+    current_user.slack_default_channel = params["slack_default_channel"]
+    current_user.save
+    redirect_to :back
+  end
+
   def update
     pn = filter_phone_number(params["phone_number"])
     if valid_phone_number?(pn)

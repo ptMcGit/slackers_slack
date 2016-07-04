@@ -7,6 +7,7 @@ class TwilioController < ApplicationController
     @user = find_user_by_phone(phone_number_filter(approved_params[:From]))
     @channel = @user.slack_default_channel
     slack_post_message @message, @user, @channel
+    head :ok
   end
 
   def approved_params

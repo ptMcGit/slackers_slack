@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     get "/user/settings"    => 'user#show',      as: :user_settings
     patch "/user/settings"  => 'user#update',    as: :user_settings_update
 
+    patch "/user/settings/slackchannel" =>
+          'user#update_slack_channel_from_button',
+          as: :user_settings_slack_channel
+
     post "/message" => "twilio#message"
 
 
