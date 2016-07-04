@@ -56,7 +56,6 @@ group :development, :test do
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'figaro'
   gem 'rspec-rails'
 end
 
@@ -66,3 +65,5 @@ gem 'omniauth'
 gem 'omniauth-slack'
 
 gem 'twilio-ruby'
+
+gem 'figaro'
